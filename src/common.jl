@@ -133,6 +133,26 @@ value_support(::Type{T}) where {T<:Distribution} = value_support(supertype(T))
 # to be decided: how to handle multivariate/matrixvariate distributions?
 Broadcast.broadcastable(d::UnivariateDistribution) = Ref(d)
 
+"""
+    minimum(d::Distribution)
+
+Return the minimum of the support of `d`.
+"""
+minimum(d::Distribution)
+
+"""
+    maximum(d::Distribution)
+
+Return the maximum of the support of `d`.
+"""
+maximum(d::Distribution)
+
+"""
+    extrema(d::Distribution)
+
+Return the minimum and maximum of the support of `d` as a 2-tuple.
+"""
+Base.extrema(d::Distribution) = minimum(d), maximum(d)
 
 ## TODO: the following types need to be improved
 abstract type SufficientStats end
